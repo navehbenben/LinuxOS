@@ -5,6 +5,7 @@ word=$2
 recursive=$3
 
 
+
 RemoveAllOUT()
 {
 for f in $path/*.out
@@ -20,9 +21,15 @@ CompileLib()
 {
 for file in $path/*; 
 do
+if (grep -i -c -w $word $file>0)
+then
  gcc "$file" -w -o $file.out
-  done;
+    fi
+
+  done
 }
+
+
 
 
 if (($# >= 1))
